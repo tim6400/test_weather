@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class DataService {
 
-  private basePath = 'http://dataservice.accuweather.com/';
+  private basePath = 'https://dataservice.accuweather.com/';
 
   private locationPath = this.basePath + 'locations/v1/cities/autocomplete';
   private currentConditionPath = this.basePath + 'currentconditions/v1/';
