@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+
+    <div class="text-center mb-3">
+        <input [(ngModel)]="asyncSelected" [typeaheadAsync]="true" [typeahead]="dataSource" (typeaheadLoading)="changeTypeaheadLoading($event)" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionsLimit]="7" typeaheadOptionField="LocalizedName" placeholder="Search for city"
+            class="form-control">
+        <div *ngIf="typeaheadLoading">Loading</div>
+    </div>
+
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <h4>City name: {{selectedCityWeather.name}}</h4>
+                        <p>Degree: {{selectedCityWeather.degree}} &#176;</p>
+                    </div>
+                    <div class="col-9 text-right mb-4">
+                        <p><button type="button" class="btn btn-outline-info" (click)="addToFavorites()" [disabled]="!isCitySelected || isSelectedCityInFavorites">Add to favorites </button></p>
+                        <p>
+                            <button type="button" class="btn btn-outline-danger" (click)="removeFromFavorites()" [disabled]="!isCitySelected || !isSelectedCityInFavorites">Remove from favorites </button></p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-2" *ngFor="let item of selectedCityWeather.foreCast">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>{{item.dayName}}</h4>
+                                <p class="card-text">Max: {{item.max}} &#176;</p>
+                                <p class="card-text">Min: {{item.min}} &#176;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

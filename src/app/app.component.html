@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light mt-4 mb-4">
+
+    <a class="navbar-brand mr-auto" href="#">Weather</a>
+
+    <!-- <div>
+        <a class="btn btn-default" routerLink="home" role="button">Home</a>
+        <a class="btn btn-default" routerLink="favorites" role="button">Favorites</a>
+    </div> -->
+
+    <tabset type="pills">
+        <tab (selectTab)="goToLInk('home')" heading="Home"></tab>
+        <tab (selectTab)="goToLInk('favorites')" heading="Favorites"></tab>
+    </tabset>
+
+</nav>
+
+<router-outlet></router-outlet>
