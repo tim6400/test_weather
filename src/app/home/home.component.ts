@@ -110,7 +110,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.locationInInUrl = params['locationKey'];
-debugger
       if (this.locationInInUrl === undefined) {
         this.initDefaultCity();
       } else {

@@ -7,15 +7,18 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'whether';
-
+  // isHome = true;
   /**
    *
    */
   constructor(
     private router: Router
-  ) {}
+  ) { }
 
-  goToLInk(path){
+  goToLink(path) {
+
+    // this.isHome = path === 'home';
+    debugger
     this.router.navigateByUrl(path);
   }
 }
