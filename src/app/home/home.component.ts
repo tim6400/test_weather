@@ -214,7 +214,7 @@ export class HomeComponent implements OnInit {
   }
 
   removeFromFavorites() {
-    this.storageService.removeFromFavorite(this.asyncSelected);
+    this.storageService.removeFromFavorite(this.selectedCityWeather.name, this.selectedCityWeather.locationKey);
     this.isSelectedCityInFavorites = false;
   }
 }

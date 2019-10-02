@@ -6,14 +6,6 @@ export class StorageService {
 
   constructor() { }
 
-  getItem(key: string) {
-    return JSON.parse(localStorage.getItem(key));
-  }
-
-  set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-
   isSavedAsFavorites(cityName: String, locationKey = null): FavoritCity {
     let favorits = JSON.parse(localStorage.getItem('favorites'));
 
@@ -29,7 +21,6 @@ export class StorageService {
   }
 
   addToFavorites(city: FavoritCity) {
-
     let favorites = this.getItem('favorites');
     if (favorites == null) favorites = [];
     favorites.push(city);
@@ -37,11 +28,21 @@ export class StorageService {
     this.set('favorites', favorites);
   }
 
-  removeFromFavorite(cityName) {
+  removeFromFavorite(cityName, locationKey) {
+    debugger
     let favorites = this.getItem('favorites');
 
-    let res = favorites.filter(item => item.name != cityName);
+    let res = favorites.filter(item => item.name !== cityName || item.locationKey != locationKey);
 
     this.set('favorites', res);
+  }
+
+
+  private getItem(key: string) {
+    return JSON.parse(localStorage.getItem(key));
+  }
+
+  private set(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
   }
 }
